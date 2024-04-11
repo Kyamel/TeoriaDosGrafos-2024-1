@@ -5,6 +5,7 @@ class ListaAdjacencias:
         print("Implementar...")
 
     #adiciona uma aresta (v1, v2) no grafo:
+    #peso eh um parametro opcional
     def addAresta(self, v1, v2, peso = 1):
         print("Implementar...")
 
