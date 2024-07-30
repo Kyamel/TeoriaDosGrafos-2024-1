@@ -2,6 +2,7 @@ import matrizAdjacencias
 import listaAdjacencias
 import info
 import sys
+import busca
 
 # cria um grafo a partir de um arquivo:
 def leitura(nomeArquivo):
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     # sys.argv[1] contem o nome do arquivo a ser lido
     grafo = leitura(sys.argv[1])
 
-    print(info.densidade(grafo))
+    print(f"Densidade do grafo: {info.densidade(grafo)}")
 
     print("Grafo original:")
     grafo.printGrafo()
@@ -45,5 +46,9 @@ if __name__ == "__main__":
     print()
 
     print(f'Grafo eh completo? {info.completo(grafo)}')
-
     print(f'Grafo eh regular? {info.regular(grafo)}')
+
+    print(f"DFS recursivo: {busca.dfsRecursivo(grafo, 0)}")
+    print(f"DFS recursivo: {busca.dfsIterativo(grafo, 0)}")
+    print(f"BFS: {busca.bfs(grafo, 0)}")
+    
