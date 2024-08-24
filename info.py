@@ -1,5 +1,4 @@
-import listaAdjacencias
-import matrizAdjacencias
+from listaAdjacencias import ListaAdjacencias
 
 # retorna a densidade do grafo:
 def densidade(grafo):
@@ -7,7 +6,7 @@ def densidade(grafo):
 
 # retorna o complemento do grafo:
 def complemento(grafo):
-    complemento = listaAdjacencias.ListaAdjacencias(grafo.numVertices)
+    complemento = ListaAdjacencias(grafo.numVertices)
     # complemento = matrizAdjacencias.MatrizAdjacencias(grafo.numVertices)
 
     for i in range(grafo.numVertices):
@@ -32,3 +31,4 @@ def regular(grafo):
         if grau != grafo.grau(i):
             return False
     return True
+

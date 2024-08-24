@@ -1,3 +1,4 @@
+import caminhoMinimo
 import matrizAdjacencias
 import listaAdjacencias
 import info
@@ -27,28 +28,26 @@ def leitura(nomeArquivo):
     return grafo
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Numero invalido de parametros! Argumentos esperados: main.py grafo.txt")
+    if len(sys.argv) != 4:
+        print("Numero invalido de parametros! Argumentos esperados: main.py grafo.txt origem destino")
         sys.exit(1)
 
     # sys.argv[1] contem o nome do arquivo a ser lido
     grafo = leitura(sys.argv[1])
-
-    print(f"Densidade do grafo: {info.densidade(grafo)}")
-
-    print("Grafo original:")
-    grafo.printGrafo()
-    print()
-
-    complemento = info.complemento(grafo)
-    print("Complemento:")
-    complemento.printGrafo()
-    print()
-
-    print(f'Grafo eh completo? {info.completo(grafo)}')
-    print(f'Grafo eh regular? {info.regular(grafo)}')
-
-    print(f"DFS recursivo: {busca.dfsRecursivo(grafo, 0)}")
-    print(f"DFS recursivo: {busca.dfsIterativo(grafo, 0)}")
-    print(f"BFS: {busca.bfs(grafo, 0)}")
     
+    print("Processando...")
+    print(50*"-")
+    
+    algoritmos = {
+        "Dijkstra": caminhoMinimo.caminhoMinDijkstra,
+        #"BellmanFord": caminhoMinimo.caminhoMinBellmanFord,
+        #"FloydWarshall": caminhoMinimo.caminhoMinFloydWarshall
+    }
+
+    for nome, func in algoritmos.items():
+        caminho, custo, tempo = func(grafo, int(sys.argv[2]), int(sys.argv[3]))
+        print(f"Algorítimo:", nome)
+        print("Caminho mínimo:", caminho)
+        print("Custo:", custo)
+        print(f"Tempo: {tempo:.3f}s")
+        print(50 * "-")
