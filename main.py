@@ -29,14 +29,14 @@ def leitura(nomeArquivo):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Numero invalido de parametros! Argumentos esperados: main.py grafo.txt origem destino")
+        print("Numero invalido de parametros! Argumentos esperados: main.py grafo.txt origem(int) destino(int)")
         sys.exit(1)
 
     # sys.argv[1] contem o nome do arquivo a ser lido
     grafo = leitura(sys.argv[1])
     
     print("Processando...")
-    print(50*"-")
+    print(50 * "-")
     
     algoritmos = {
         "Dijkstra": caminhoMinimo.caminhoMinDijkstra,

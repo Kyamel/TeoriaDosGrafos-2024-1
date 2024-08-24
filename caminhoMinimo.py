@@ -34,7 +34,6 @@ def caminhoMinDijkstra(grafo: ListaAdjacencias, origem: int, destino: int) -> Tu
         
         C.add(u)
         O.remove(u)
-
         if u == destino:
             break
 
