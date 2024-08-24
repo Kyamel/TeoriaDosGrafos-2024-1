@@ -27,6 +27,7 @@ def caminhoMinDijkstra(grafo: ListaAdjacencias, origem: int, destino: int) -> Tu
     while C != set(range(grafo.numVertices)):
         
         menor = float('inf')
+        u = 0
         for v in O:
             if dist[v] < menor:
                 menor = dist[v]
@@ -52,7 +53,7 @@ def caminhoMinDijkstra(grafo: ListaAdjacencias, origem: int, destino: int) -> Tu
         caminho.append(atual)
         atual = prev[atual]
         if atual is None:
-            return None, float('inf')
+            return None, float('inf'), end - start
         
     caminho.append(origem)
     caminho.reverse()
