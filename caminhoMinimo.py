@@ -27,11 +27,13 @@ def caminhoMinDijkstra(grafo: ListaAdjacencias, origem: int, destino: int) -> Tu
     while C != set(range(grafo.numVertices)):
         
         menor = float('inf')
-        u = 0
+        u = None
         for v in O:
             if dist[v] < menor:
                 menor = dist[v]
                 u = v
+        if u is None:
+            break
         
         C.add(u)
         O.remove(u)
