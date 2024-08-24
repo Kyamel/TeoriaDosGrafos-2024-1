@@ -66,4 +66,52 @@ def caminhoMinFloydWarshall(grafo: ListaAdjacencias, origem: int, destino: int) 
     pass
 
 def caminhoMinBellmanFord(grafo: ListaAdjacencias, origem: int, destino: int) -> Tuple[List[int], int, float]:
-    pass
+    """
+    Calcula o caminho mínimo do vértice de origem até o vértice de destino usando o algoritmo de Bellman - Ford.
+
+    Returns
+        - caminho (List[int]): O caminho da origem até o destino no formato de uma lista de inteiros representando cada vértice.
+        - custo (int): O custo total do caminho mínimo.
+        - tempo (float): O tempo de execução do algoritmo em segundos.
+    """
+
+    start = time.time()
+
+    dist = [float('inf')]*grafo.numVertices
+    prev = [None] *grafo.numVertices
+
+    dist[origem] = 0
+    prev[origem] = 0
+
+    for _ in range(grafo.numVertices - 1):
+        atualizou = False
+        for u in range(grafo.numVertices):
+            for v, peso in grafo.vizinhos(u):
+                if dist[u] != float('inf') and dist[u] + peso < dist[v]:
+                    dist[v] = dist[u] + peso
+                    prev[v] = u
+                    atualizou = True
+        if not atualizou:
+            break
+    
+    # Verificação de ciclos negativos
+    for u in range(grafo.numVertices):
+        for v, peso in grafo.vizinhos(u):
+            if dist[u] != float('inf') and dist[u] + peso < dist[v]:
+                raise ValueError("O grafo contém um ciclo de peso negativo")
+            
+    end = time.time()
+
+    caminho = []
+    atual = destino
+
+    while atual != origem:
+        caminho.append(atual)
+        atual = prev[atual]
+        if atual is None:
+            return None, float('inf'), end - start
+    
+    caminho.append(origem)
+    caminho.reverse()
+
+    return caminho, dist[destino], end - start

@@ -40,7 +40,7 @@ if __name__ == "__main__":
     
     algoritmos = {
         "Dijkstra": caminhoMinimo.caminhoMinDijkstra,
-        #"BellmanFord": caminhoMinimo.caminhoMinBellmanFord,
+        "BellmanFord": caminhoMinimo.caminhoMinBellmanFord,
         #"FloydWarshall": caminhoMinimo.caminhoMinFloydWarshall
     }
 
