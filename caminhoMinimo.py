@@ -58,3 +58,9 @@ def caminhoMinDijkstra(grafo: ListaAdjacencias, origem: int, destino: int) -> Tu
     caminho.reverse()
     
     return caminho, dist[destino], end - start
+
+def caminhoMinFloydWarshall(grafo: ListaAdjacencias, origem: int, destino: int) -> Tuple[List[int], int, float]:
+    pass
+
+def caminhoMinBellmanFord(grafo: ListaAdjacencias, origem: int, destino: int) -> Tuple[List[int], int, float]:
+    pass
