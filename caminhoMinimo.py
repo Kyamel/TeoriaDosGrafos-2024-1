@@ -98,7 +98,8 @@ def caminhoMinBellmanFord(grafo: ListaAdjacencias, origem: int, destino: int) ->
     for u in range(grafo.numVertices):
         for v, peso in grafo.vizinhos(u):
             if dist[u] != float('inf') and dist[u] + peso < dist[v]:
-                raise ValueError("O grafo contém um ciclo de peso negativo")
+                end = time.time()
+                return None, float('-inf'), end - start
             
     end = time.time()
 
