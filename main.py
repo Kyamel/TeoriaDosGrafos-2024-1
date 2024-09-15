@@ -52,7 +52,7 @@ if __name__ == "__main__":
     }
 
     for nome, func in algoritmos.items():
-        caminho, custo, tempo = run_with_timeout(func, grafo, int(sys.argv[2]), int(sys.argv[3]))
+        caminho, custo, tempo = func(grafo, int(sys.argv[2]), int(sys.argv[3]))
         print(f"Algorítimo:", nome)
         print("Caminho mínimo:", caminho)
         print("Custo:", custo)
