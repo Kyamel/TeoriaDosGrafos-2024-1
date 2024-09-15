@@ -25,15 +25,6 @@ def leitura(nomeArquivo):
 
     return grafo
 
-TIME_LIMIT = 600 # 10 min
-def run_with_timeout(func, *args, timeout=TIME_LIMIT):
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        future = executor.submit(func, *args)  # Submete a função
-        try:
-            return future.result(timeout=timeout)  # Espera o resultado
-        except concurrent.futures.TimeoutError:
-            return None, None, TIME_LIMIT  # Se ultrapassar o tempo, retorna valores padrão
-
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print("Numero invalido de parametros! Argumentos esperados: main.py grafo.txt origem(int) destino(int)")
