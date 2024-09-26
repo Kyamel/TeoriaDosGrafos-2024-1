@@ -1,6 +1,6 @@
 # Representacao computacional de um grafo por meio de lista de adjacencias:
 class ListaAdjacencias:
-    # inicializa o grafo:    
+    # inicializa o grafo:
     def __init__(self, numVertices):
         self.numVertices = numVertices
         self.numArestas = 0

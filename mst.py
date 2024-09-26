@@ -9,13 +9,15 @@ def is_direcionado(graph: la.ListaAdjacencias) -> bool:
     return False  # Não é direcionado
 
 def degree_limited_mst(graph: la.ListaAdjacencias, grau_limite: int) -> la.ListaAdjacencias:
-    # Ordena as arestas do grafo pelo peso (menor para maior) - princípio do Kruskal
+
     vertices = []
     for v1 in range(graph.numVertices):
         for (v2, peso) in graph.vizinhos(v1):
-            vertices.append((v1, v2, peso))
+            if v1 < v2:
+                vertices.append((v1, v2, peso))
 
-    vertices = sorted(vertices, key=lambda x: x[2])  # Ordena as arestas pelo peso
+    # Ordena as arestas do grafo pelo peso (menor para maior) - princípio do Kruskal
+    vertices = sorted(vertices, key=lambda x: x[2])
 
     # Cria uma nova lista de adjacências para representar a árvore geradora mínima (MST)
     mst = la.ListaAdjacencias(graph.numVertices)
@@ -37,6 +39,6 @@ def degree_limited_mst(graph: la.ListaAdjacencias, grau_limite: int) -> la.Lista
 
     # Se a árvore geradora não conseguiu conectar todos os nós
     if mst.numArestas != graph.numVertices - 1:
-        raise Exception(f"Não foi possível conectar todos os vértices com o limite de grau: {grau_limite}.")
+        raise Exception(f"Não foi possível conectar todos os vértices para o limite de grau: {grau_limite}.")
 
     return mst
